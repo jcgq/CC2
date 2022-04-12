@@ -8,7 +8,11 @@ services:
         - ./haproxy:/haproxy-override
         - ./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
     ports:
-        - "8080:80"    
+        - "8080:80"
+    depends_on:
+      # - grafana
+      - grafana1
+      - grafana2
 
 #Prometeus server
   prometheus:
@@ -21,38 +25,56 @@ services:
       - prometheus-data:/prometheus
     command: --web.enable-lifecycle  --config.file=/etc/prometheus/prometheus.yml --storage.tsdb.retention.time=1w
 
-#Nodos exporter de Prometeus
+#Nodos exporters de Prometeus
   node-exporter1:
     container_name: node1-exporter
     image: prom/node-exporter
     restart: always
     expose:
-      - '9100'
+      - 9100
 
   node-exporter2:
     container_name: node2-exporter
     image: prom/node-exporter
     restart: always
     expose:
-      - '9100'
-#Grafana
-  grafana:
-    container_name: node-grafana
-    image: grafana/grafana-oss
-    ports:
-      - 3000:3000
-    volumes: 
-      - grafana-data:/var/lib/grafana
-      - ./grafana/provisioning/:/etc/grafana/provisioning/
+      - 9100
 
-  # grafana2:
-  #   container_name: node2-grafana
+#Grafana
+  # grafana:
   #   image: grafana/grafana-oss
-  #   ports:
-  #     - 3000:3001
   #   volumes: 
   #     - grafana-data:/var/lib/grafana
   #     - ./grafana/provisioning/:/etc/grafana/provisioning/
+  #   expose:
+  #     - 3000
+  #   depends_on:
+  #     - prometheus
+  #   deploy:
+  #     mode: replicated
+  #     replicas: 2
+
+  grafana1:
+    container_name: grafana1
+    image: grafana/grafana-oss
+    volumes: 
+      - grafana-data:/var/lib/grafana
+      - ./grafana/provisioning/:/etc/grafana/provisioning/
+    expose:
+      - 3000
+    depends_on:
+      - prometheus
+
+  grafana2:
+    container_name: grafana2
+    image: grafana/grafana-oss
+    volumes: 
+      - grafana-data:/var/lib/grafana
+      - ./grafana/provisioning/:/etc/grafana/provisioning/
+    expose:
+      - 3000
+    depends_on:
+      - prometheus
 
 
 volumes:
