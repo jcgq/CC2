@@ -1,0 +1,60 @@
+version: '3'
+
+services:
+#Haproxy
+  haproxy:
+    image: haproxy:1.6
+    volumes:
+        - ./haproxy:/haproxy-override
+        - ./haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+    ports:
+        - "8080:80"    
+
+#Prometeus server
+  prometheus:
+    container_name: node-prom
+    image: prom/prometheus:v2.30.3
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus:/etc/prometheus
+      - prometheus-data:/prometheus
+    command: --web.enable-lifecycle  --config.file=/etc/prometheus/prometheus.yml --storage.tsdb.retention.time=1w
+
+#Nodos exporter de Prometeus
+  node-exporter1:
+    container_name: node1-exporter
+    image: prom/node-exporter
+    restart: always
+    expose:
+      - '9100'
+
+  node-exporter2:
+    container_name: node2-exporter
+    image: prom/node-exporter
+    restart: always
+    expose:
+      - '9100'
+#Grafana
+  grafana:
+    container_name: node-grafana
+    image: grafana/grafana-oss
+    ports:
+      - 3000:3000
+    volumes: 
+      - grafana-data:/var/lib/grafana
+      - ./grafana/provisioning/:/etc/grafana/provisioning/
+
+  # grafana2:
+  #   container_name: node2-grafana
+  #   image: grafana/grafana-oss
+  #   ports:
+  #     - 3000:3001
+  #   volumes: 
+  #     - grafana-data:/var/lib/grafana
+  #     - ./grafana/provisioning/:/etc/grafana/provisioning/
+
+
+volumes:
+  prometheus-data: {}
+  grafana-data: {}
