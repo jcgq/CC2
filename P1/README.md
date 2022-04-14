@@ -25,7 +25,7 @@ Algunas de las cosas que se describen a continuación, se han realizado en clase
 **Despliegue**
 Para poder poner en marcha nuestro sistema, será necesario realizar la siguientes órdenes:
 - make up: que levantará los servicios y abrirá la página en donde visualizar las métricas de grafana. Será necesario cargar el dashboard clicando en donde indica la imagen:
-<img src="img/buscardash.png">
+<img src="img/buscarDash.png">
 Luego, clicaremos en el único que nos aparece:
 <img src="img/cargarDash.png">
 - make up-d: si queremos activar lo anterior pero en modo demonio.
