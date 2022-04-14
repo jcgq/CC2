@@ -24,12 +24,14 @@ Algunas de las cosas que se describen a continuación, se han realizado en clase
 
 **Despliegue**
 Para poder poner en marcha nuestro sistema, será necesario realizar la siguientes órdenes:
-- make up: que levantará los servicios y abrirá la página en donde visualizar las métricas de grafana. Será necesario cargar el dashboard clicando en donde indica la imagen:
+- **make up**: que levantará los servicios y abrirá la página en donde visualizar las métricas de grafana. Será necesario cargar el dashboard clicando en donde indica la imagen:
 <img src="img/buscarDash.png">
 Luego, clicaremos en el único que nos aparece:
 <img src="img/cargarDash.png">
-- make up-d: si queremos activar lo anterior pero en modo demonio.
--make down: para parar los servicios.
+
+- **make up-d**: si queremos activar lo anterior pero en modo demonio.
+
+- **make down**: para parar los servicios.
 
 - **Grafana**: Será necesario crear su carpeta grafana, donde se alojará la carpeta provisioning y dentro de ella dos carpetas:
     - **Dashboard**: donde tendremos el panel que queremos automatizar para la visualización de las métricas (De esta forma evitaremos que se tenga que crear cada vez que se levanten los servicios) Aquí tenemos el panel en formato [json](https://github.com/jcgq/CC2/blob/main/P1/grafana/provisioning/dashboards/node-exporter-full_rev26.json), que se puede descargar desde [aqui](https://grafana.com/grafana/dashboards/) y [un archivo de configuración](https://github.com/jcgq/CC2/blob/main/P1/grafana/provisioning/dashboards/dashboard.yml), en donde se indicará la ruta de donde se obtiene el panel.
