@@ -66,6 +66,6 @@ Todos los archivos referentes a la práctica, se pueden encontrar dentro de la c
 ## Material auxiliar (imágenes para la documentación, ficheros de configuración, etc.)
 Todo está referenciado en la propia documentación, por lo que aquí se mostrará la información de los dos nodos-exporter:
 - Node 1: En este nodo hemos añadido una nueva gráfica en forma de línea temporal.
-<img src="img/dashboard.png" width="500" height="300">
+<img src="img/dashboard.png">
 - Node 2
-<img src="img/dashboard2.png" width="500" height="300">
+<img src="img/dashboard2.png">
