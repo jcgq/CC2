@@ -22,9 +22,19 @@ La idea general del proyecto, es que un usuario acceda a la dirección HAProxy, 
 ## Servicios desplegados y su configuración. (Incluye todos los detalles necesarios)
 Algunas de las cosas que se describen a continuación, se han realizado en clase durante las sesiones prácticas. Hay configuraciones y sentencias que las ha comentado el profesor (entendiendo el porqué), para que los servicios se levante y usen sin problemas.
 
+**Despliegue**
+Para poder poner en marcha nuestro sistema, será necesario realizar la siguientes órdenes:
+- make up: que levantará los servicios y abrirá la página en donde visualizar las métricas de grafana. Será necesario cargar el dashboard clicando en donde indica la imagen:
+<img src="img/buscardash.png">
+Luego, clicaremos en el único que nos aparece:
+<img src="img/cargarDash.png">
+- make up-d: si queremos activar lo anterior pero en modo demonio.
+-make down: para parar los servicios.
+
 - **Grafana**: Será necesario crear su carpeta grafana, donde se alojará la carpeta provisioning y dentro de ella dos carpetas:
     - **Dashboard**: donde tendremos el panel que queremos automatizar para la visualización de las métricas (De esta forma evitaremos que se tenga que crear cada vez que se levanten los servicios) Aquí tenemos el panel en formato [json](https://github.com/jcgq/CC2/blob/main/P1/grafana/provisioning/dashboards/node-exporter-full_rev26.json), que se puede descargar desde [aqui](https://grafana.com/grafana/dashboards/) y [un archivo de configuración](https://github.com/jcgq/CC2/blob/main/P1/grafana/provisioning/dashboards/dashboard.yml), en donde se indicará la ruta de donde se obtiene el panel.
     - **Datasources**: será la carpeta donde se indique en un [archivo de configuracion](https://github.com/jcgq/CC2/blob/main/P1/grafana/provisioning/datasources/datasource.yml), de que ruta se obtienen los datos para la visualización. Este archivo lo podemos encontrar (Sin nuestras modificaciones para el proyecto), en la [web oficial de Grafana](https://grafana.com/docs/grafana/latest/administration/provisioning/#example-data-source-config-file)
+    Hemos elegido el Node-Full, porque a parte de ser el mejor valorado y con más valoraciones positivas, es fácil de modificar y permite la visualización y análisis de un montón de parámetros y es el que se utilizó en clase.
     - **Servicio**: para el desarrollo de esta parte lo hemos intentado de varias maneras:
         - **Replicas**: en el nodo de grafana, se indica con *deploy*, metodo *replicated* y en el número de réplicas *2*, que nos haga dos réplicas. El inconveniente que hemos tenido, es que nosotros no controlamos el nombre que *HAProxy* le da a los contenedores que crea, por lo que luego, no los encontraba a la hora de poder mostrarlo en el *localhost:8080*. Sin embargo, se ha dejado reflejado en el [docker-compose](https://github.com/jcgq/CC2/blob/main/P1/docker-compose.yml) pero de forma comentada.
         - **Nodos**: se han creado dos nodos del tipo *Grafana* muy similar a los *node-exporter*, en donde exponemos el puerto, le damos un nombre diferente y, le indicamos la fuente de datos en el apartado de *volumes*
