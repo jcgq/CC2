@@ -46,15 +46,17 @@ Para este servicio, habrá que tener en cuenta dos partes:
         - [Prometheus](https://github.com/jcgq/CC2/blob/main/P1/prometheus/prometheus.yml): es el archivo de configuración, en donde se indica el anterior archivo y de donde se van a sacar las métricas, en nuestro caso de los dos *nodos exporter*.
     - **Contenedor**: En el docker-compose, se le indican varios comandos de configuración (explicados en clase) y los volumenes, como en Grafana, de donde se van a lozalizar los datos.
 - **HAProxy**
-
-    Será el puerto *localhost:8080*, desde donde visualizaremos Grafana.
-        - **Contenedor**: se le indica de los dos nodos (en nuestro caso) de los que depende, que serán los dos creados de grafana. Y además, los volúmenes asociados al servicio.
-        - **Configuración**: al [archivo](https://github.com/jcgq/CC2/blob/main/P1/haproxy/haproxy.cfg) que se creó en clase, y que se puede obtener en [HAPROXY](https://www.haproxy.com/blog/how-to-run-haproxy-with-docker/), se indica sobre que servicios se va a realizar el balanceo de cargas, que en nuestro caso, será: *grafana<1-2>:3000 check*
+Será el puerto *localhost:8080*, desde donde visualizaremos Grafana.
+    - **Contenedor**: se le indica de los dos nodos (en nuestro caso) de los que depende, que serán los dos creados de grafana. Y además, los volúmenes asociados al servicio.
+    - **Configuración**: al [archivo](https://github.com/jcgq/CC2/blob/main/P1/haproxy/haproxy.cfg) que se creó en clase, y que se puede obtener en [HAPROXY](https://www.haproxy.com/blog/how-to-run-haproxy-with-docker/), se indica sobre que servicios se va a realizar el balanceo de cargas, que en nuestro caso, será: *grafana<1-2>:3000 check*
 
 ## Conclusiones
 
-## Referencias bibliográficas y recursos utilizados
 
+## Referencias bibliográficas y recursos utilizados
+Los enlaces que se han seguido para el desarrollo de la práctica son los siguienets:
+- 
 ## Práctica y archivos
+Todos los archivos referentes a la práctica, se pueden encontrar dentro de la carpeta *[P1](https://github.com/jcgq/CC2/tree/main/P1)*
 
 ## Material auxiliar (imágenes para la documentación, ficheros de configuración, etc.)
