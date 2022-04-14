@@ -42,12 +42,30 @@ Algunas de las cosas que se describen a continuación, se han realizado en clase
     - **Configuración**: al [archivo](https://github.com/jcgq/CC2/blob/main/P1/haproxy/haproxy.cfg) que se creó en clase, y que se puede obtener en [HAPROXY](https://www.haproxy.com/blog/how-to-run-haproxy-with-docker/), se indica sobre que servicios se va a realizar el balanceo de cargas, que en nuestro caso, será: *grafana<1-2>:3000 check*
 
 ## Conclusiones
+Gracias a esta práctica hemos podido trabajar y conocer de una forma más profunda la utilidad que no sofrecen los servicios como Docker y Docker-Compose, sobre todo para poder desplegar servicios en la nube de una forma rápida, consistente y escalable.
 
+Se ha tenido una gran curva de aprendizaje debido a que nunca se había realizado una práctica similar y la configuración de los servicios presenta un elevado grado, a mi parecer, de precisión y de conocimientos mínimos. Hay que tener en cuenta los volumenes, los puertos, los archivos de configuración, los datos, los comandos internos...
+
+No obstante, gracias a servicios como HAProxy hemos generado un blanceador de cargas que evitará la sobrecarga del sistema y, que si por algún motivo algono de los servicios de Grafana falle, siempre haya datos del operativo, lo que dotará a nuestro servicio de una alta disponibilidad.
 
 ## Referencias bibliográficas y recursos utilizados
 Los enlaces que se han seguido para el desarrollo de la práctica son los siguienets:
-- 
+- [Grafana](https://grafana.com/)
+- [HAProxy Web](https://www.haproxy.com/blog/how-to-run-haproxy-with-docker/)
+- [Grafana Datasource](https://grafana.com/docs/grafana/latest/datasources/prometheus/)
+- [YouTube](https://www.youtube.com/watch?v=ECLIqvayAEs&ab_channel=Thetips4you)
+- [GitHub CC](https://github.com/manuparra/cc2122)
+- [HaP Configuracion](https://www.haproxy.com/blog/haproxy-configuration-basics-load-balance-your-servers/)
+- Ayuda de compañeros (Con enlaces de documentación o errores que no estaban claros por internet):
+    - [José Luis Gallego](https://github.com/jlgallego99)
+    - [Jorge Prieto](https://github.com/soyjorgeprg)
+    - [Diego Hernández](https://github.com/LCinder)
 ## Práctica y archivos
 Todos los archivos referentes a la práctica, se pueden encontrar dentro de la carpeta *[P1](https://github.com/jcgq/CC2/tree/main/P1)*
 
 ## Material auxiliar (imágenes para la documentación, ficheros de configuración, etc.)
+Todo está referenciado en la propia documentación, por lo que aquí se mostrará la información de los dos nodos-exporter:
+- Node 1: En este nodo hemos añadido una nueva gráfica en forma de línea temporal.
+<img src="img/dashboard.png" width="180" height="150">
+- Node 2
+<img src="img/dashboard2.png" width="180" height="150">
