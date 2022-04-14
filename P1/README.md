@@ -69,3 +69,10 @@ Todo está referenciado en la propia documentación, por lo que aquí se mostrar
 <img src="img/dashboard.png">
 - Node 2
 <img src="img/dashboard2.png">
+
+**Otra información relevante**
+Como la información de los discos o de la CPU
+- Storage Disk:
+<img src="img/storageDisk.png">
+- CPU/Memory/Net:
+<img src="img/cpu.png">
