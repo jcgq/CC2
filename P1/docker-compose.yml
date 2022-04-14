@@ -26,6 +26,15 @@ services:
     command: --web.enable-lifecycle  --config.file=/etc/prometheus/prometheus.yml --storage.tsdb.retention.time=1w
 
 #Nodos exporters de Prometeus
+  # node-exporter:
+  #   image: prom/node-exporter
+  #   restart: always
+  #   expose:
+  #     - 9100
+  #   deploy:
+  #     mode: replicated
+  #     replicas: 2
+
   node-exporter1:
     container_name: node1-exporter
     image: prom/node-exporter
