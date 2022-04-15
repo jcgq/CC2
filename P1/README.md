@@ -94,6 +94,9 @@ Cuando intentaba utilizar el método de *deploy: replicated* sólo me salía est
 <img src="img/errorGrafana.png">
 
 Tras mucho investigar, descubrí un [foro](https://stackoverflow.com/questions/36724948/docker-compose-unsupported-config-option-for-services-service-web), en donde indica que podía ser un problema de permisos o autentificación de *Grafana*, por lo que añadí dos líneas al [datasource](https://github.com/jcgq/CC2/blob/main/P1/grafana/provisioning/datasources/datasource.yml), que fueron:
-    - basicAuth: true
-    - basicAuthUser: admin
+
+- basicAuth: true
+
+- basicAuthUser: admin
+
 Que anteriormente estaban vacías, y el error se solucionó. por tanto, quise hacer la prueba con tres grafanas y los servicios se levantaban y ejecutaban sin problema.
