@@ -26,9 +26,9 @@ datasources:
     # <string> database name, if used
     database:
     # <bool> enable/disable basic auth
-    basicAuth:
+    basicAuth: true
     # <string> basic auth username
-    basicAuthUser:
+    basicAuthUser: admin
     # <string> Deprecated, use secureJsonData.basicAuthPassword
     basicAuthPassword:
     # <bool> enable/disable with credentials headers
